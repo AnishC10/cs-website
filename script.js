@@ -13,7 +13,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const savedFoods = localStorage.getItem("foods");
     if (savedFoods) {
         foods = JSON.parse(savedFoods);
-        renderFoods();
+    }
+    renderFoods();
+});
+
+// ===============================
+// Add Food (Button + Enter Key)
+// ===============================
+addFoodBtn.addEventListener("click", addFood);
+caloriesInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        addFood();
     }
 
     addFoodBtn.addEventListener("click", () => {
