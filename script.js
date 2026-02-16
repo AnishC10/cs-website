@@ -1,8 +1,9 @@
 const foodNameInput = document.getElementById("foodName");
 const caloriesInput = document.getElementById("calories");
+const totalCaloriesEl = document.getElementById("totalCalories");
 const addFoodBtn = document.getElementById("addFoodBtn");
 const foodList = document.getElementById("foodList");
-const totalCaloriesEl = document.getElementById("totalCalories");
+
 
 let foods = [];
 
