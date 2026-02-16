@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MacroTrack – Project Vision</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">MacroTrack</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link active" href="project.html">Project</a></li>
+        <li class="nav-item"><a class="nav-link" href="tutorial.html">Tutorial</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-5">
+
+  <h1 class="text-center mb-4">Project Vision</h1>
+  <p class="text-center text-muted mb-5">
+    MacroTrack is designed as a scalable nutrition tracking platform that can grow beyond a static app.
+  </p>
+
+  <!-- Feature Overview -->
+  <div class="row g-4 mb-5">
+    <div class="col-md-4">
+      <div class="card p-4 h-100">
+        <h5>Current Features</h5>
+        <p class="text-muted">
+          Client-side food logging with calorie tracking and persistence.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card p-4 h-100">
+        <h5>Technical Focus</h5>
+        <p class="text-muted">
+          Clean separation of UI, logic, and data handling using JavaScript and localStorage.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card p-4 h-100">
+        <h5>Future Expansion</h5>
+        <p class="text-muted">
+          Designed for backend integration, authentication, and analytics.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Roadmap -->
+  <h3 class="mb-3">Development Roadmap</h3>
+
+  <div class="list-group" id="roadmap">
+    <button class="list-group-item list-group-item-action" data-step="1">
+      Phase 1: Core Tracking
+    </button>
+    <button class="list-group-item list-group-item-action" data-step="2">
+      Phase 2: Data & Accounts
+    </button>
+    <button class="list-group-item list-group-item-action" data-step="3">
+      Phase 3: Analytics & Insights
+    </button>
+  </div>
+
+  <div class="card p-4 mt-4 d-none" id="roadmapDetails">
+    <h5 id="roadmapTitle"></h5>
+    <p id="roadmapDescription" class="mb-0"></p>
+  </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Page-Specific JS -->
+<script>
+  const roadmapData = {
+    1: {
+      title: "Phase 1: Core Tracking",
+      description: "Food logging, calorie totals, category tracking, and client-side persistence."
+    },
+    2: {
+      title: "Phase 2: Data & Accounts",
+      description: "User accounts, cloud storage (Supabase), authentication, and multi-device sync."
+    },
+    3: {
+      title: "Phase 3: Analytics & Insights",
+      description: "Macro breakdowns, trends, visual charts, and personalized recommendations."
+    }
+  };
+
+  const buttons = document.querySelectorAll("#roadmap button");
+  const detailsCard = document.getElementById("roadmapDetails");
+  const titleEl = document.getElementById("roadmapTitle");
+  const descEl = document.getElementById("roadmapDescription");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const step = btn.dataset.step;
+      titleEl.textContent = roadmapData[step].title;
+      descEl.textContent = roadmapData[step].description;
+      detailsCard.classList.remove("d-none");
+    });
+  });
+</script>
+
+</body>
+</html>
