@@ -2,37 +2,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const foodNameInput = document.getElementById("foodName");
     const caloriesInput = document.getElementById("calories");
+    const foodTypeInput = document.getElementById("foodType");
     const foodList = document.getElementById("foodList");
     const totalCaloriesEl = document.getElementById("totalCalories");
     const addFoodBtn = document.getElementById("addFoodBtn");
-    const foodTypeInput = document.getElementById("foodType");
 
     let foods = [];
 
-    // Load saved data
+    // Load saved foods
     const savedFoods = localStorage.getItem("foods");
     if (savedFoods) {
         foods = JSON.parse(savedFoods);
-    }
-    renderFoods();
-});
-
-// ===============================
-// Add Food (Button + Enter Key)
-// ===============================
-addFoodBtn.addEventListener("click", addFood);
-caloriesInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-        addFood();
+        renderFoods();
     }
 
-    addFoodBtn.addEventListener("click", () => {
+    // ===============================
+    // Event Listeners
+    // ===============================
+    addFoodBtn.addEventListener("click", addFood);
+
+    caloriesInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            addFood();
+        }
+    });
+
+    // ===============================
+    // Functions
+    // ===============================
+    function addFood() {
         const name = foodNameInput.value.trim();
-        const calories = parseInt(caloriesInput.value);
+        const calories = Number(caloriesInput.value);
         const type = foodTypeInput.value.trim();
 
-        if (!name || isNaN(calories) || calories <= 0) {
-            alert("Please enter valid food name and calorie amount.");
+        if (!name || calories <= 0) {
+            alert("Please enter valid food info.");
             return;
         }
 
@@ -49,7 +53,7 @@ caloriesInput.addEventListener("keypress", (e) => {
         foodNameInput.value = "";
         caloriesInput.value = "";
         foodTypeInput.value = "";
-    });
+    }
 
     function renderFoods() {
         foodList.innerHTML = "";
